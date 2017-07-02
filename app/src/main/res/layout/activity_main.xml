@@ -13,7 +13,7 @@
         android:layout_marginTop="32dp"
         android:backgroundTint="#2e7d32"
         android:padding="8dp"
-        android:text="Drag Me"
+        android:text="@string/drag_me"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>

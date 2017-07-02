@@ -4,6 +4,6 @@
     android:shape="oval">
 
     <size
-        android:width="72dp"
-        android:height="72dp"/>
+        android:width="@dimen/circle_size"
+        android:height="@dimen/circle_size"/>
 </shape>
