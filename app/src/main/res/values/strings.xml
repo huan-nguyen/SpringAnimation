@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Spring Animation</string>
+    <string name="damping_ratio">Damping ratio:</string>
+    <string name="stiffness">stiffness:</string>
+</resources>
