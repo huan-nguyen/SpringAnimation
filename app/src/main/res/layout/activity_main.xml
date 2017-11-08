@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -21,24 +20,24 @@
     <TextView
         android:id="@+id/first"
         style="@style/AppTheme.CircleTextView"
-        android:layout_width="@dimen/other_circles_size"
-        android:layout_height="@dimen/other_circles_size"
+        android:layout_width="@dimen/first_circle_size"
+        android:layout_height="@dimen/first_circle_size"
         android:layout_marginTop="@dimen/circle_distance"
         android:backgroundTint="#388e3c"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/drag" />
+        app:layout_constraintTop_toBottomOf="@id/drag" />
 
     <TextView
         android:id="@+id/second"
         style="@style/AppTheme.CircleTextView"
-        android:layout_width="@dimen/other_circles_size"
-        android:layout_height="@dimen/other_circles_size"
+        android:layout_width="@dimen/second_circle_size"
+        android:layout_height="@dimen/second_circle_size"
         android:layout_marginTop="@dimen/circle_distance"
         android:backgroundTint="#81c784"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/first" />
+        app:layout_constraintTop_toBottomOf="@id/first" />
 
     <TextView
         android:id="@+id/damping_label"
@@ -47,45 +46,45 @@
         android:paddingEnd="8dp"
         android:paddingStart="8dp"
         android:text="@string/damping_ratio"
-        app:layout_constraintBottom_toTopOf="@id/damping_value" />
+        app:layout_constraintBottom_toTopOf="@+id/damping_value" />
 
     <TextView
-        android:id="@+id/damping_value"
+        android:id="@id/damping_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingEnd="8dp"
         android:paddingStart="8dp"
         app:layout_constraintBottom_toTopOf="@+id/stiffness_label"
-        app:layout_constraintStart_toStartOf="@+id/damping_label" />
+        app:layout_constraintStart_toStartOf="@id/damping_label" />
 
     <SeekBar
         android:id="@+id/damping_bar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/stiffness_label"
+        app:layout_constraintBottom_toTopOf="@id/stiffness_label"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/damping_label"
-        app:layout_constraintTop_toTopOf="@+id/damping_label" />
+        app:layout_constraintStart_toEndOf="@id/damping_label"
+        app:layout_constraintTop_toTopOf="@id/damping_label" />
 
     <TextView
-        android:id="@+id/stiffness_label"
+        android:id="@id/stiffness_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingEnd="8dp"
         android:paddingStart="8dp"
         android:text="@string/stiffness"
         app:layout_constraintBottom_toTopOf="@+id/stiffness_value"
-        app:layout_constraintStart_toStartOf="@+id/damping_label" />
+        app:layout_constraintStart_toStartOf="@id/damping_label" />
 
     <TextView
-        android:id="@+id/stiffness_value"
+        android:id="@id/stiffness_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingEnd="8dp"
         android:paddingStart="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/damping_label"
-        app:layout_constraintTop_toTopOf="@+id/stiffness_label" />
+        app:layout_constraintStart_toStartOf="@id/damping_label"
+        app:layout_constraintTop_toTopOf="@id/stiffness_label" />
 
     <SeekBar
         android:id="@+id/stiffness_bar"
@@ -93,7 +92,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/damping_label"
-        app:layout_constraintTop_toTopOf="@+id/stiffness_label" />
+        app:layout_constraintStart_toEndOf="@id/damping_label"
+        app:layout_constraintTop_toTopOf="@id/stiffness_label" />
 
 </android.support.constraint.ConstraintLayout>
