@@ -87,10 +87,13 @@ class MainActivity : AppCompatActivity() {
         val firstLayoutParams = firstView.layoutParams as ViewGroup.MarginLayoutParams
         val secondLayoutParams = secondView.layoutParams as ViewGroup.MarginLayoutParams
 
-        firstXAnim.onUpdate { value -> secondXAnim.animateToFinalPosition(value) }
+        firstXAnim.onUpdate { value ->
+            secondXAnim.animateToFinalPosition(value + ((firstView.width -
+                    secondView.width) / 2))
+        }
         firstYAnim.onUpdate { value ->
-            secondYAnim.animateToFinalPosition(value +
-                    secondView.height + secondLayoutParams.topMargin)
+            secondYAnim.animateToFinalPosition(value + firstView.height +
+                    secondLayoutParams.topMargin)
         }
 
         dragView.setOnTouchListener { view, event ->
@@ -105,8 +108,10 @@ class MainActivity : AppCompatActivity() {
                     val newY = event.rawY + dY
 
                     view.animate().x(newX).y(newY).setDuration(0).start()
-                    firstXAnim.animateToFinalPosition(newX + ((dragView.width - firstView.width) / 2))
-                    firstYAnim.animateToFinalPosition(newY + dragView.height + firstLayoutParams.topMargin)
+                    firstXAnim.animateToFinalPosition(newX + ((dragView.width -
+                            firstView.width) / 2))
+                    firstYAnim.animateToFinalPosition(newY + dragView.height +
+                            firstLayoutParams.topMargin)
                 }
             }
 
