@@ -28,6 +28,7 @@ import android.support.annotation.IdRes
 import android.support.v7.app.AppCompatActivity
 import android.view.MotionEvent
 import android.view.View
+import android.view.ViewGroup
 import android.widget.SeekBar
 import android.widget.TextView
 import kotlin.LazyThreadSafetyMode.NONE
@@ -83,11 +84,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupAnimation() {
-        val viewYDistance = resources.getDimensionPixelSize(R.dimen.circle_size) +
-                resources.getDimensionPixelSize(R.dimen.circle_distance)
+        val firstLayoutParams = firstView.layoutParams as ViewGroup.MarginLayoutParams
+        val secondLayoutParams = secondView.layoutParams as ViewGroup.MarginLayoutParams
 
-        firstXAnim.onUpdate { value -> secondXAnim.animateToFinalPosition(value) }
-        firstYAnim.onUpdate { value -> secondYAnim.animateToFinalPosition(value + viewYDistance) }
+        firstXAnim.onUpdate { value ->
+            secondXAnim.animateToFinalPosition(value + ((firstView.width -
+                    secondView.width) / 2))
+        }
+        firstYAnim.onUpdate { value ->
+            secondYAnim.animateToFinalPosition(value + firstView.height +
+                    secondLayoutParams.topMargin)
+        }
 
         dragView.setOnTouchListener { view, event ->
             when (event.action) {
@@ -101,8 +108,10 @@ class MainActivity : AppCompatActivity() {
                     val newY = event.rawY + dY
 
                     view.animate().x(newX).y(newY).setDuration(0).start()
-                    firstXAnim.animateToFinalPosition(newX)
-                    firstYAnim.animateToFinalPosition(newY + viewYDistance)
+                    firstXAnim.animateToFinalPosition(newX + ((dragView.width -
+                            firstView.width) / 2))
+                    firstYAnim.animateToFinalPosition(newY + dragView.height +
+                            firstLayoutParams.topMargin)
                 }
             }
 
@@ -110,7 +119,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun <K> createSpringAnimation(obj: K, property: FloatPropertyCompat<K>) : SpringAnimation {
+    private fun <K> createSpringAnimation(obj: K, property: FloatPropertyCompat<K>): SpringAnimation {
         return SpringAnimation(obj, property).setSpring(SpringForce())
     }
 
@@ -139,6 +148,7 @@ class MainActivity : AppCompatActivity() {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
                 onProgressChange(progress)
             }
+
             override fun onStartTrackingTouch(seekBar: SeekBar?) {}
             override fun onStopTrackingTouch(seekBar: SeekBar?) {}
         })
